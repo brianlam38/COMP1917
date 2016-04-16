@@ -55,12 +55,25 @@ int main (int argc, char *argv[]) {
 
    // Brian's code
 
-   int pixelPos
+   int row = 0;
+   int column = 1;
 
    while (pos < numBytes) {
-      
-      byte = 0;
-      byte = 255;
+      // Colour in black
+      while (pos < (squareSize*3) && row == 0) {
+         byte = 0;
+         fwrite (&byte, sizeof byte, 1, outputFile);
+         pos++;
+      }
+      // Colour in whites
+      while (pos < (squareSize*3) && column == 1) {
+         byte = 255;
+         fwrite (&byte, sizeof byte, 1, outputFile);
+         pos++;
+      }
+
+      // byte = 0;
+      // byte = 255;
 
       fwrite (&byte, sizeof byte, 1, outputFile);
       pos++;

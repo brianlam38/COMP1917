@@ -61,11 +61,11 @@ item getItem (List l, int position) {
 /* INSERTING NEW NODE */
 void appendItem (List l, item i) {
 	assert (l != NULL);
-	nodePointer newNode = malloc (sizeof (struct _node));	// setting aside memory for newNode
-	newNode->data = i;										// giving newNode a value
-	newNode->next = NULL;									// giving newNode a pointer to next node (NULL for now)
+	nodePointer newNode = malloc (sizeof (struct _node));	// Setting aside memory for newNode
+	newNode->data = i;										// Giving newNode a value
+	newNode->next = NULL;									// Giving newNode a pointer to next node (NULL for now)
 
-	l->first = newNode
+	l->first = newNode;										// Pointing previous ptr (HEAD ptr in this case) to newNode struct.
 }
 
 /* testList.c */

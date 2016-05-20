@@ -1,4 +1,4 @@
-/* LECTRE 44 - LINKED LISTS #2 */
+/* MODULE 9 - LINKED LISTS */
 
 /* List.h */
 
@@ -14,6 +14,15 @@ void appendItem (List l, item i);	// append item to the end of the list
 
 
 /* List.c */
+/*	CREATING LINKED LIST FROM SCRATCH INSTRUCTIONS
+*	1. Define a struct "node", with two properties: item data + ptr to the next node.
+*	2. Define a pointer to the struct "node", called "*nodePointer".
+*	3. Define a struct "list" (the HEAD), with one property: ptr to the first node.
+*	4. Write a "newList" function --> Creates a list / head "new", which points to the first element (NULL initially)
+*	5. Write a "length" function --> Counts the length of the linked list. Useful for running tests.
+*	6. (OPTIONAL) Write an appendItem function --> Creates a newNode + inserts between the HEAD / FIRST NODEs
+*/
+
 #include "List.h"
 
 typedef struct _node *nodePointer;	// *nodePointer points to a struct "node"
@@ -24,9 +33,9 @@ typedef struct _node {				// This is the struct called "node" --> Contains an IT
 } node;
 
 /* LIST STRUCT */
-typedef struct _list {				// (THE HEAD) "list" is a pointer to the first node in the list
-	nodePointer first;				// The head can store items such as:
-} list;									// length of list, description of list
+typedef struct _list {				// (THE HEAD / LIST) has a pointer to the FIRST NODE in the list
+	nodePointer first;				// A field called "first"
+} list;									// The head can store extra fields such as: length of list, description of list
 
 /* CREATING A NEW LIST */
 List newList (void) {
@@ -61,12 +70,26 @@ item getItem (List l, int position) {
 /* INSERTING NEW NODE */
 void appendItem (List l, item i) {
 	assert (l != NULL);
-	nodePointer newNode = malloc (sizeof (struct _node));	// Setting aside memory for newNode
-	newNode->data = i;										// Giving newNode a value
-	newNode->next = NULL;									// Giving newNode a pointer to next node (NULL for now)
-
-	l->first = newNode;										// Pointing previous ptr (HEAD ptr in this case) to newNode struct.
+	// 1. create new node
+	nodePointer newNode = malloc (sizeof (struct _node));
+	// 2. put data in new node (99)
+	newNode->data = i;
+	// 3. make ptr in new node point to the OLD node (node w/ 86)
+	newNode->next = l->first;
+	// 4. tell "list" where the start of the new chain is.
+	l->first = newNode;
 }
+
+/*	GENERAL INSERTING BETWEEN TWO-NODES INSTRUCTIONS
+*	1. Create a new node
+*	2. Put data in new node
+*	3. Make ptr in new node point to the OLD NODE in list --> tie new + old one together
+*	4. Make ptr in the PREVIOUS NODE point to the new node. --> break link btwn previous node and old node, then tie previous + new together
+*	IN EXAMS, YOU SHOULD:
+*	1. Draw pictures (to understand specs)
+*	2. Write tests
+*	3. Implementations
+*/
 
 /* testList.c */
 #include <stdio.h>
@@ -85,7 +108,11 @@ int main (int argc, char *argv[]) {
 
 	appendItem (l, 86);			// add in 1 element
 	assert (l != NULL);			// assert that l is not NULL
-	assert (length (l) == 1);	//
+	assert (length (l) == 1);	// testing length now = 1
+
+	appendItem (l, 99);
+	assert (l != NULL);
+	assert (length (l) == 2);	// testing length now = 2
 
 	printf ("All List tests passed! You are awesome!")
 	return EXIT_SUCCESS;

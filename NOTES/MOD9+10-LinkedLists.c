@@ -118,5 +118,26 @@ int main (int argc, char *argv[]) {
 	return EXIT_SUCCESS;
 }
 
+/* MODULE 10 - LINKED LISTS PART 2 */
 
+beforeNODE = position -1 from the node you want to delete
+deleteNODE = node that you want to delete
+afterNODE = position +1 from the node you wnat to delete
+
+// EXAMPLE: LISTHEAD --> 99 (beforeNODE) --> 86 (deleteNODE) --> 13 (afterNODE) --> NULL
+// We want to remove the node marked "deleteNODE"
+
+/* DELETE NODE FUNCTION */
+deleteNode(l,1);	// from List l, delete node in position 1
+
+void deleteNode (List l, int position) {
+	//1. While position != beforeNODE, increment count
+	//2. Then create local ptr that points to node at position 0 (pos 0 = beforeNODE)
+	//3. Then create local ptr that points to node at position 1 (pos 1= beforeNODE.next / deleteNODE)
+	//4. Set beforeNEXT ptr = afterNODE
+	//5. Free deleteNODE (node deleted, but local ptr to deleteNODE still exists)
+	//6. Set local ptr to deleteNODE -> NULL
+
+	//NOTE: Deleting the first node (the one that head points to) will be different
+}
 

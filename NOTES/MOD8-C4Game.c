@@ -1,7 +1,9 @@
 /*
-*	C4Game.c
-*	lecture code
-*/
+ *	MODULE 8 - Connect 4 Game
+ *
+ *	C4Game.c
+ *	
+ */
 
 #include <stdio.h>
 #include <stdlib.h>

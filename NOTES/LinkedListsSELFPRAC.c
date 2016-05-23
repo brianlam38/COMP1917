@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct _node *link;
+typedef struct _node *nodePointer
 
 typedef struct _node {
 	int value;
-	link next;
+	nodePointer next;
 } node;
 
 typedef struct _list {
-	link head;
+	nodePointer head;
 } list;
 
 /* FACTORIAL PROBLEM
@@ -26,30 +26,36 @@ typedef struct _list {
 
  // X-->1-->2-->6
 
-list factorial(int x) {
-	list ls = createList();
-	link newNode = NULL;
-	int count = 1;
-	int fact = 1;
-	
-	while (counter <= x) {
-		fact = fact * counter;
-		newNode = createNode(fact);
-	}
+typedef struct _node *nodePointer
+
+typedef struct _node {
+	int value;
+	nodePointer next;
+} node;
+
+typedef struct _list {
+	nodePointer head;
+} list;
+
+// Creating a new list
+list newList(void) {
+	list newList = malloc(sizeof(struct _list));
+	assert(newList != NULL);
+	newList->head = NULL;
+
+	return newList;
 }
 
-static list createList() {
+// Creating a new node
+void addItem(List l, int x) {
+	assert(l != NULL);
+	nodePointer newNode = malloc(sizeof(struct _node));
+	newNode->value = x;
+	newNode->next = l->next;	// set newNode pointer to the old node
 
+	l->next = newNode; 			// set oldNode pointer to the newNodes
 }
 
-static link createNode(int val) {
-	link n = malloc(sizeof(node));
-	n->value = val;
-	n->next = NULL;
-}
 
-static void addToEnd() {
-
-}
 
 

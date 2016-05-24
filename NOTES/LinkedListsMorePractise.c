@@ -65,17 +65,20 @@ static link createNode(int val) {
 	n->next = NULL;
 }
 
-static void addToEnd(list l, link n) {
-	if (l->head = NULL) {
-		l->head = n;
-	} else {
-		curr = l->head;
-		while (curr->next != NULLL) {
-
-		}
-	}
-
+static void addToEnd(list l, link n){
+   link curr;
+   if(l->head == NULL){
+       l->head = n;
+   } else {
+       curr = l->head;
+       while(curr->next != NULL){
+            curr = curr->next;
+       }
+       curr->next = n;
+   }
 }
+
+
 
 /* SELECT EVENS PROBLEM
  *

@@ -76,9 +76,24 @@ static void addToEnd(list l, link n) {
 	}
 }
 
+/* DELETE Nth NODE WITHIN LIST */
+void deleteNthNode(list l, link currentNode, int index) {
+	//1. While position != beforeNODE, increment count
+	//2. Then create local ptr that points to node at position 0 (pos 0 = beforeNODE)
+	//3. Then create local ptr that points to node at position 1 (pos 1= beforeNODE.next / deleteNODE)
+	//4. Set beforeNEXT ptr = afterNODE
+	//5. Free deleteNODE (node deleted, but local ptr to deleteNODE still exists)
+	//6. Set local ptr to deleteNODE -> NULL
+/*
+	int pos = 0;
+	link currentNode = l->head;
 
-
-
+	while (pos != (index -1)) {
+		pos++;
+		currentNode = currentNode->next;
+	}
+*/
+}
 
 // ##################################
 // # USE OF BASIC UTILITY FUNCTIONS #

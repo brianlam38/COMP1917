@@ -66,15 +66,24 @@ int GetNth(list sourceList, int index) {			// The nodes are numbered from 0.
 
 void DeleteListTest() {
 	struct node* myList = BuildOneTwoThree(); // build {1, 2, 3}
-	DeleteList(&myList); // deletes the three nodes and sets myList to NULL
+	DeleteList(&myList); 					  // deletes the three nodes and sets myList to NULL
 }
 
-void DeleteList(struct node** headRef) {
-	link currentNode = l
+void DeleteList(list l) {
+	link currentNode = l->head;
 	link nextNode;
+
+	while (currentNode != NULL) {		// while end of list isn't reached,
+		nextNode = currentNode->next;	// set nextNode = currentNode nextPTR (store)
+		free(currentNode);				// frees currentNode memory
+		currentNode = nextNode;			// sets currentNode var = nextNode
+	}
+	l->head = NULL;						// sets headPTR = NULL
 }
 
-
+/* (Q4) STANFORD: Write a function deleteList() that takes a list, deallocates
+ *				  all of its memory and sets its head pointer to NULL.
+ */
 
 
 

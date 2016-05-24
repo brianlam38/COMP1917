@@ -66,11 +66,11 @@ static link createNode(int val) {
 }
 
 static void addToEnd(list l, link n) {
-	if (l->head == NULL) {
-		1->head = n;
+	if (l->head = NULL) {
+		l->head = n;
 	} else {
-		curr = 1->head;
-		while (curr->next != NULLL+) {
+		curr = l->head;
+		while (curr->next != NULLL) {
 
 		}
 	}

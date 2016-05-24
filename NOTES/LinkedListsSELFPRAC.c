@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* LINKED LIST STRUCT TEMPLATE */
+// ###############################
+// # LINKED LIST STRUCT TEMPLATE #
+// ###############################
 
-typedef struct _node *link
+typedef struct _node *link;
 
 typedef struct _node {			// node = struct which contains a value + ptr "next" to the next node of list
 	int value;
@@ -12,12 +14,30 @@ typedef struct _node {			// node = struct which contains a value + ptr "next" to
 
 typedef struct _list {			// list = struct which contains a ptr "head" to the first node of the list
 	link head;
-} list;
+} *list;
 
-/* LINKED LIST BASIC UTILITY FUNCTIONS */
+// #######################################
+// # LINKED LIST BASIC UTILITY FUNCTIONS #
+// #######################################
 
-// Iterates a pointer through all nodes in the list
-// Also Returns the number of nodes in the list
+/* CREATE A NEW NODE */
+static link createNode(int x) {
+	link newNode = malloc(sizeof(struct _node));	// (1) set memory aside for new node
+	newNode->value = x;								// (2) assign a value to new node
+	newNode->next = NULL;							// (3) set next ptr = NULL (last node in list)
+
+	return newNode;
+}
+
+/* CREATE A NEW LIST */
+static list createList(void) {
+	list l = malloc(sizeof(struct _list));
+	list->head = NULL;
+
+	return l;
+}
+
+/* ITERATES POINTER THROUGH ALL NODES IN THE LIST */
 static int length(list l) {				
 	int count = 0;						// initiate counter = 0
 
@@ -30,19 +50,39 @@ static int length(list l) {
 	return count;
 }
 
-// Creates a list with nodes 0, 1, 2 ... n
-static link createNode(int x) {
-	link newNode = malloc(sizeof(struct _node));	// (1) set memory aside for new node
-	newNode->value = x;								// (2) assign a value to new node
-	newNode->next = NULL;							// (3) set next ptr = NULL (last node in list)
+/* PUSH NEW NODE AS THE 0TH NODE OF THE LIST */
+static void insertNode (list l, int x) {								// "push" into the list as the 0th node
+	link newNode = malloc(sizeof (struct _node));						// 1. create new node
+	link->value = x;													// 2. put data in new node (99)
+
+	link->next = l->head;												// 3. make ptr in new node point to the OLD node (node w/ 86)
+	l->head = newNode;												    // 4. make ptr head, point to the new node
 }
 
-// Given an int + struct node PTR, pointing to the head PTR,
-// add a new node at the head of the list with the 3-step-link-in:
-	// (1)
-static Push(struct node** headRef, int newData);
+/* PUSH NEW NODE TO THE END OF THE LIST
+ *
+ * Special Case: Function to add nodes to end of an empty list
+ * (1) Create initial node + Create loop
+ * (2) Create dummy node + Create loop. Return (dummy.next) (not preferred method)
+ *
+ */
+static void addToEnd(list l, link n) {
+	if (list->head != NULL) {			// if head PTR != NULl, then head PTR = 
+		list->head = n;
+	} else {
+		curr = l->head;
+		while (curr->next != NULL)
+			currs = curr->next;
+	}
+}
 
 
+
+
+
+// ##################################
+// # USE OF BASIC UTILITY FUNCTIONS #
+// ##################################
 
 /* USE OF BASIC UTILITY FUNCTIONS */
 void BasicsCaller() {
@@ -67,28 +107,6 @@ void BasicsCaller() {
 
 
 
-
-static list createList(void) {
-	list l = malloc(sizeof(struct _list));
-	list->head = NULL;
-
-	return l;
-}
-
-static link createNode(int x) {
-	link newNode = malloc(sizeof(struct _node));
-	newNode->value = x;
-	newNode->next = NULL;
-}
-
-static void addToEnd(list l, link n) {
-	if (l->head = NULL) {
-		l->head = n;
-	} else {
-		curr = l->head;
-		while ()
-	}
-}
 
 
 

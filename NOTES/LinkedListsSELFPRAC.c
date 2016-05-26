@@ -72,7 +72,7 @@ static void addToEnd(list l, link n) {
 	} else {
 		curr = l->head;
 		while (curr->next != NULL)
-			currs = curr->next;
+			curr = curr->next;
 	}
 }
 

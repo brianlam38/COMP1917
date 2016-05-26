@@ -27,5 +27,3 @@ typedef struct node {
 // insert it at the front of the output list.
 // dont forget to draw pictures
 list reverse (list inputList);
-
-

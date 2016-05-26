@@ -4,8 +4,9 @@
  *	   --> Linking existing node after another one: list->head = newNode
  *	   --> Unless you are declaring a new "link" to begin iteration, then link currentNode = list->head;
  *
- *
- *
+ * (2) With moving nodes within its own list, you can create a PTR to the list itself that acts as a "copy"
+ *	   --> list A;
+ *	   --> E.g. link listPTR = A;
  *
  */
 

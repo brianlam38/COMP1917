@@ -15,37 +15,48 @@
 
 list reverse (list inputList) {
 
-	list reverseList = inputList;
+// so there are no lists in this, just nodes and node pointers
 
-	if (inputList != NULL) {
-		list countList = inputList->rest; 		// create inputList counter + set it to inputlist head
-		list previous = NULL;					// create previous counter + set to NULL
-		list goBackToBeginning = inputList;
-		list end = reverseList;
-		while (goBackToBeginning->rest != NULL) {		// WHILE inputlist is not at the end:
-			while (countList != NULL) {		// WHILE inputList counter != end of list
-				previous = countList;					// previousPTR store address of countList; // point to second last node
-				countList = countList->rest;			// iterate countList x 1 //points to last node
-			}
-			//reverseList->rest = countList;			// end of inputList connected to reverseList head
-			end->rest = countList;
-			end = countList;
-			previous->rest = NULL;
-			countList = goBackToBeginning;			// set countList back to address of inputList head (the start of the list)
-		}
-		end->rest = goBackToBeginning;
-	}
-	return reverseList;
+// need to include a start once I find the end of the linked list
+// so use a while loop
+// if not starting NULL, store the addresses until I get the last
+
+// repeat process but now attach to the end of the new node
+
+// Lets assume we have 3 nodes in the linked List
+// test 0 and 1 later
+
+    list startingNode = inputList;
+
+    if (inputList != NULL) {
+        list current = inputList; // points to the first node
+        list previous = current;// here previous contains the address of the first node
+
+        while (current != NULL) {
+            previous = current;// so here, it will stop where previous is the address of the final node
+            current = current->rest; 
+        }
+
+        startingNode = previous; // so startingNode contains the address of the new header; the address of the new first node; the address of the final node in the old list
+        list endNewNode = startingNode; //endNewNode also contains the address of the new node, but we will be moving this later
+
+        while (inputList->rest != NULL) { // so here, it will stop the loop when the address of the old first node points to NULL
+            current = inputList; // here, current will be equal to the address of the first node
+            
+            while (current->rest != NULL) {
+                previous = current; // here, it will stop at the address of the second last node
+                current = current->rest; // here, it will stop at the address of the last node
+            }
+            
+            endNewNode->rest = current;
+//            current->rest = NULL; // shouldnt need this
+            endNewNode = current;
+            previous->rest = NULL;
+
+        }
+        endNewNode->rest = inputList;
+        inputList->rest = NULL;
+    }
+
+    return startingNode;
 }
-
-// inputList:  [1] --> [2] --> [3] --> [X]
-// outputList: [3] --> [2] --> [1] --> [X]
-
-// NULL CASE
-// inputList --> [X]
-// outputList -->[X]
-
-// Solution 1
-	// Move INTPUT --> OUTPUT via:
-		// --> [1]moveToFront --> [2]moveToFront --> [3]moveToFront --> [X]
-

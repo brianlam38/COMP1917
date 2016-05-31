@@ -5,6 +5,8 @@
 #include "list-ppexam.h"
 
 
+
+
 //function to determine length of a linked list
 int numItems (list l) {
 
@@ -18,48 +20,48 @@ int numItems (list l) {
 }
 
 void frontBackSplit (list sourceList, list frontList, list backList) {
-	int split = (numItems(sourceList) / 2);
 
+
+	link curr = sourceList->head;
+	link prev = NULL;
+
+	int split = (numItems(sourceList) / 2);
 	int count = 0;
-	link current = sourceList->head;
-	link previous = NULL;
 
 	// null case
 	if (sourceList->head == NULL) {
-		frontList->head = current;
-		current = NULL;
-		sourceList->head = NULL;
-	// one node case
+		frontList->head = NULL;
+		backList->head = NULL;
+	// one case
 	} else if (numItems(sourceList) == 1) {
-
 		frontList->head = sourceList->head;
 		frontList->head->next = NULL;
 		backList->head = NULL;
 		sourceList->head = NULL;
-
 	// even case
-	} else if (numItems(sourceList) == 1) {
-
+	} else if (numItems(sourceList) % 2 == 0) {
 		frontList->head = sourceList->head;
 		while (count < split) {
-			previous = current;
-			current = current->next;
+			prev = curr;
+			curr = curr->next;
 			count++;
 		}
-		backList->head = current;
-		previous->next = NULL;
-		sourceList->head = NULL;
-	// odd case
-	} else if (numItems(sourceList) == 1) {
+		backList->head = curr; 	 // start of backlist
+		prev->next = NULL; 	   	 // end of frontlist
+		sourceList->head = NULL; // empty sourceList
 
-		frontList->head = sourceList->head;
-		while (count < (split + 1)) {
-			previous = current;
-			current = current->next;
-			count++;
-		}
-		backList->head = current;
-		previous->next = NULL;
-		sourceList->head = NULL;
+	// odd case
+	} else if (numItems(sourceList) % 2 == 1) {
+			frontList->head = sourceList->head;
+			while (count < (split + 1)) {
+				prev = curr;
+				curr = curr->next;
+				count++;
+			}
+			prev->next = NULL;
+			backList->head = curr;
+			sourceList->head = NULL;
 	}
+
+
 }

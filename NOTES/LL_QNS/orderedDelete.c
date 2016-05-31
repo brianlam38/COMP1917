@@ -27,8 +27,25 @@
 //   1->4->6->6->10->X
 
 void orderedDelete (list l) {
-// put your code here
+    link prev = l->head;                // prev = node 1 (ignore first case)
+    link curr = l->head->next;          // curr = node 2
 
+    if (l->head != NULL) {
+        while (curr != NULL) {
+            // remove case (breaking link)
+            if (curr->value < prev->value) {
+                curr = curr->next;
+                prev->next = curr;
+            // non remove case (iterate along)
+            } else {  
+                prev = curr;
+                curr = curr->next;
+            }
+        }  
+    }
+}
+
+/* CHRIS SOLUTION
 // A while loop with 7, 8, 21, X
 
     if (l->head != NULL) { //A1
@@ -49,6 +66,7 @@ void orderedDelete (list l) {
     endOfNewList->next = NULL; // A2 now points to NULL
     }
 } 
+*/
 
 /*---------------------------------------------THE WRONG VERSION
     if (l->head != NULL) { //A1

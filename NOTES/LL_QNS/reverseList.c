@@ -11,52 +11,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "reverseList.h"
+#include "list-ppexam.h"
 
 list reverse (list inputList) {
-
-// so there are no lists in this, just nodes and node pointers
-
-// need to include a start once I find the end of the linked list
-// so use a while loop
-// if not starting NULL, store the addresses until I get the last
-
-// repeat process but now attach to the end of the new node
-
-// Lets assume we have 3 nodes in the linked List
-// test 0 and 1 later
-
-    list startingNode = inputList;
+    link curr = inputList->head;
+    link temp = curr;
+    link next = curr->next;
 
     if (inputList != NULL) {
-        list current = inputList; // points to the first node
-        list previous = current;// here previous contains the address of the first node
 
-        while (current != NULL) {
-            previous = current;// so here, it will stop where previous is the address of the final node
-            current = current->rest; 
+        if (next == NULL) {
+            inputList->head = curr;
+            curr->next = NULL;
         }
 
-        startingNode = previous; // so startingNode contains the address of the new header; the address of the new first node; the address of the final node in the old list
-        list endNewNode = startingNode; //endNewNode also contains the address of the new node, but we will be moving this later
-
-        while (inputList->rest != NULL) { // so here, it will stop the loop when the address of the old first node points to NULL
-            current = inputList; // here, current will be equal to the address of the first node
-            
-            while (current->rest != NULL) {
-                previous = current; // here, it will stop at the address of the second last node
-                current = current->rest; // here, it will stop at the address of the last node
-            }
-            
-            endNewNode->rest = current;
-//            current->rest = NULL; // shouldnt need this
-            endNewNode = current;
-            previous->rest = NULL;
-
+        if (temp == curr) {
+            temp->next = NULL;      // temp @ NODE 1 -> points to NULL
+            curr = next;            // curr @ NODE 2
+            next = curr->next;      // next @ NODE 3
         }
-        endNewNode->rest = inputList;
-        inputList->rest = NULL;
+
+        while (curr != NULL) {
+            curr->next = temp;      // point curr backwards NODE 2 -> NODE 1
+            temp = curr;            // set temp @ NODE 2
+            curr = next;            // set curr @ NODE 3
+            next = curr->next;      // set next @ NODE 4
+        }
+        inputList->head = curr;
     }
-
-    return startingNode;
+    return inputList;
 }
+
+
+
+
+
+

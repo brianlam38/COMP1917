@@ -27,23 +27,24 @@
 //   1->4->6->6->10->X
 
 void orderedDelete (list l) {
-    link prev = l->head;                // prev = node 1 (ignore first case)
-    link curr = l->head->next;          // curr = node 2
+    link curr = l->head;
+    link prev = NULL;
 
     if (l->head != NULL) {
+        prev = curr;
+        curr = curr->next;
         while (curr != NULL) {
-            // remove case (breaking link)
-            if (curr->value < prev->value) {
-                curr = curr->next;
-                prev->next = curr;
-            // non remove case (iterate along)
-            } else {  
+            if (prev->value <= curr->value) {
                 prev = curr;
                 curr = curr->next;
+            } else {
+                curr = curr->next;
+                prev->next = curr;
             }
-        }  
+        }
     }
 }
+
 
 /* CHRIS SOLUTION
 // A while loop with 7, 8, 21, X

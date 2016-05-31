@@ -21,10 +21,10 @@ typedef struct _list {
     link head;
 } *list; 
 
-int numItems (list l); //implementation of this function is provided
-void frontBackSplit (list sourceList, list frontList, list backList);
+//int numItems (list l); //implementation of this function is provided
+//void frontBackSplit (list sourceList, list frontList, list backList);
 
-//void orderedDelete (list l);
+void orderedDelete (list l);
 
 //nodePtr frontToBack (nodePtr list);
 

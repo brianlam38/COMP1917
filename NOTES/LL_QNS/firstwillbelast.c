@@ -20,6 +20,13 @@
 
 nodePtr frontToBack (nodePtr list) {
 
+
+
+
+}
+
+/* CHRIS SOLUTION
+
 // we need to get the first node of the list and move it to the back
 // now... how do we do that
 // we are going to need a previous???
@@ -45,3 +52,5 @@ nodePtr frontToBack (nodePtr list) {
     
     return ret;
 }
+
+*/

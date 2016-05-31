@@ -14,59 +14,17 @@
 // # DIFFICULT QUESTIONS #
 // #######################
 
-
-//#####################################################################################
-/* CONCETENATE TWO LISTS INTO A NEW LIST */
-List concatenateListIntoNew(List A, List B);
-
-
-
-
-
-//#####################################################################################
-/* CONCETENATE LIST B INTO LIST A */
-List concatenateListIntoA(List A, List B);
-
-
-
 //#####################################################################################
 /* SPLIT LIST INTO 2: FRONT + BACK LIST */
 void frontBackSplit (list sourceList, list frontList, list backList);
-	int split = (numItems(sourceList) / 2);
 
-	frontList->head = sourceList->head;
-	int count = 0;
-	link current = frontList->head;
-	// even case
-	if (split % 2 == 0) {
-
-		while (count < split) {
-			current = current->next;
-		}
-		link after = current->next;
-		current->next = NULL;
-		backList->head = after;
-	// odd case
-	} else if (split % 2 == 1) {
-
-		while (count < (split + 1)) {
-			current = current->next;
-		}
-		link after = current->next;
-		current->next = NULL;
-		backList->head = after;
-	}
-}
-
-
-
-
+	// SOLVED
 
 //#####################################################################################
 /* WEAVE 2 LISTS TOGETHER */
 list weavedList(list A, list B);
 
-
+	// NO SOLUTION YET
 
 //#####################################################################################
 /* REVERSE A LIST (old struct) */
@@ -93,9 +51,9 @@ list reverse (list inputList) {
 
 //#####################################################################################
 /* FRONT TO BACK (old struct) */
-nodePtr frontToBack (nodePtr list) {
+nodePtr frontToBack (nodePtr list);
 
-}
+	// NO SOLUTION YET
 
 //#####################################################################################
 /* PAIR SWAP */
@@ -131,10 +89,12 @@ void removeUpperCase(List l) {
 //#####################################################################################
 /* ORDERED DELETE */
 
-void orderedDelete (list l) {
-	
-}
+int numItems (list l);
+void frontBackSplit (list sourceList, list frontList, list backList);
 
+	// SOLVED
+
+//#####################################################################################
 
 
 

@@ -4,9 +4,6 @@
  
 #include "list-ppexam.h"
 
-
-
-
 //function to determine length of a linked list
 int numItems (list l) {
 
@@ -62,6 +59,4 @@ void frontBackSplit (list sourceList, list frontList, list backList) {
 			backList->head = curr;
 			sourceList->head = NULL;
 	}
-
-
 }

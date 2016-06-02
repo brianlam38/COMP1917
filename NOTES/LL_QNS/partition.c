@@ -1,40 +1,36 @@
+// partition.c
+// gcc -Wall -Werror -std=c99 -O -o testPartition testPartition.c partition.c
+
+//OR for gdb debugging use
+// gcc -Wall -Werror -std=c99 -gdwarf-2 -o testPartition testPartition.c partition.c
+     
+#include <stdlib.h>
+#include <stdio.h>
+#include <assert.h>
+     
+#include "list-partition.h"
+     
+// given a list of integers and an integer key, write a function which 
+// finds all the integers in the list that are smaller than the first element 
+// and moves them to the beginning of the list. 
+
+// So if the original list is        10->55->66->4->X, 
+// the list should be modified to be  4->10->55->66->X
+
+// If the original list is 10->4->1->X
+// the list should be modified to be 4->1->10->X
+
+// If the original list is    10->55->3->9->10->89->1->11->X, 
+// the modified list would be 3->9->1->10->55->10->89->11->X
+
+// If the original list is empty it should remain unmodified
+
+// Constraints:
+// don't delete any nodes (i.e. do not call free())
+// don't create any new structs (i.e. do not call malloc())
+// the nodes that are smaller and moved to the front should remain in their original relative order
+// the nodes that are greater than or equal should remain in their original relative order
+     
 void partition (list sourceList) {
-	link smallerList = NULL;					// represent the left list
-	link smallerTail = NULL;					// represent the end node of left list
 
-	if (sourceList->head != NULL) {
-		int val = sourceList->head->value;		// stores initial comparison value
-
-		link curr = sourceList->head->next;		// initiates current (node 2)
-		link prev = sourceList->head;			// initiates previous (node 1)
-
-		while (curr != NULL) {
-			// MOVE NODE CASE
-			if (curr->value < value) {			
-				link next = curr->next;			// declare a next ptr (node 3)
-				prev->next = next;				// breaking link, connecting prev to next (node 1 -> node 3)
-
-				// INITIAL MOVE NODE CASE
-				if (smallerTail == NULL) {
-					smallerList = curr;			// set smallerList = curr (smallerList = node 2)
-				// OTHER MOVE NODE CASES
-				} else {
-					smallerTail->next = curr;	// connect "curr" (node to move from RHS) to smallertail->nexts
-					smallerTail = curr;			// update the new smallerTail
-				}
-				smallerTail = curr;				// set smallerTail = curr (for the initial case)
-				curr->next = NULL;				// set the tail to point to NULL
-				curr = next;					// MOVE CURR BACK TO RHS LIST @ NEXT NODE
-			// NON MOVE NODE CASE
-			} else {
-				prev = curr;					// move prev up to curr
-				curr = curr->next;				// move curr to next node
-			}
-		}
-		// AT THE END OF LIST ITERATION
-		if (smallerTail != NULL) {
-			smallerTail->next = sourceList->head;	// connect LHS tail with sourceList->head
-			sourceList->head = smallerList;			// set sourceList->head to front of LHS list
-		}
-	}
 }

@@ -6,7 +6,7 @@
 typedef struct _node* Node;
 typedef struct _list* List;
  
- 
+
 //returns a new list of length 0
 List newList();
 //frees everything malloced for the list
@@ -20,3 +20,5 @@ char getValue(List l, int index);
 //remove all upper case letters from the list
 //type "ascii" on the Terminal, it might be useful
 void removeUpperCase(List l);
+
+ 

@@ -16,7 +16,7 @@ typedef struct _node {
 typedef struct _list {
     Node head;
 } list;
- 
+
 //when the removeUpperCase() function is complete,
 //compile with testList2.c, type
 //"gcc -Wall -Werror -O -o test testList2.c List2.c"
@@ -51,35 +51,37 @@ typedef struct _list {
 //given a list A->a->B->b->C->c->d->D->E->e->X
 //then removeUpperCase(list);
 //the list is a->b->c->d->e->X
-/*
-typedef struct _node* Node;
-typedef struct _list* List;
-*/
-
 void removeUpperCase(List l) {
-    Node current = l->head;
-    Node prev = NULL;
-
-    while(current != NULL){
-
-        if(current->value >= 'A' && current->value <= 'Z'){
-            Node tmp = current;
-            current = current->next;
-         
-            if (prev == NULL){       // if prev = NULL (the starting case) (should only run once)
-                l->head = current; 
-            } else {                 // else = set prev->next = current
-                prev->next = current;
+    if (l->head != NULL) {
+        Node curr = l->head;
+        Node prev = NULL;
+        // for one node case
+        if (l->head->next == NULL) {
+            if ((l->head->value >= 'A') && (l->head->value <= 'Z')) {
+                l->head = NULL;
             }
-         
-            free(tmp);
-         
         } else {
-            prev = current;
-            current = current->next;
+            // for first case
+            while ((curr->value >= 'A') && (curr->value <= 'Z')) {
+                curr = curr->next;
+            }
+            // reached lower case letter
+            l->head = curr;
+            prev = curr;
+            curr = curr->next;
+            while (curr != NULL) {
+                if ((curr->value >= 'A') && (curr->value <= 'Z')) {
+                    prev->next = curr->next;
+                    curr = curr->next;
+                } else {
+                    prev = curr;
+                    curr = curr->next;
+                }
+            }
         }
     }
 }
+ 
 
 
 //returns a new list of length 0
@@ -134,41 +136,4 @@ char getValue(List l, int index) {
    return curNode->value;
 }
 
-
-
-
-
-
-
-/*  CHRIS ANSWER
-
-// starting with the address of the list,
-// move forward
-// if between 'A' and 'Z', remove from the list, otherwise, continue as normal
-  
-    // special list head case
-    if (l->head != NULL) {
-        Node current = l->head; // so now current points to the first node of the list
-        Node endOfList = NULL;
-
-        while ((current->value >= 'A') || (current->value <= 'Z')) {
-            current = current->next;
-        } // so this while loop will stop with current containing the address of the first node where the char is not UPPER CASE
-
-        l->head = current; // so here, we have officially connected the old list head to the first node which we will not drop
-        endOfList = current; // here, current contains the address of the last node in the list
-
-        current = current->next; // here, current contains the address of the node after the one which is last officially in the list
-
-        while (current != NULL) {
-            if ((current->value < 'A') && (current->value >'Z')) {
-                endOfList->next = current;
-                endOfList = current;
-            }
-        current = current->next;
-        }
-    }
-}
-*/
-
-
+ 

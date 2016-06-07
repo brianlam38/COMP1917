@@ -44,39 +44,4 @@ int numItems (list l) {
 }
 
 void pairwiseSwap (list l) {
-// put your code here
-
-    int count = (numItems(l)) / 2; // so this will tell me how many times I need to do the double joint, not including when there is one extra
-
-    if ((l->head != NULL) && (numItems(l) != 1)) {
-        link current = l->head; // first node
-
-        link first = current; // == first node (1 OLD)
-        link second = first->next; // == second node (2 OLD)
-
-        current = second->next; // reset to == third node (3 OLD)
-
-        link oldTail = first;
-
-        l->head = second;
-        second->next = first;
-        first->next = current;
-
-
-        int counter = 0;
-
-        while (counter < (count - 1)) {
-            first = current; // == first node (1 OLD) 3
-            second = first->next; // == second node (2 OLD) 4
- 
-            current = second->next; // reset to == third node (3 OLD) 5 OLD
-    
-            oldTail->next = second;
-            second->next = first;
-            oldTail = first;
-            first->next = current;
-
-            counter++;
-        }
-    }
 }

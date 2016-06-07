@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "List2.h"
- 
+
 typedef struct _node {
     char value;
     Node next;
@@ -52,36 +52,41 @@ typedef struct _list {
 //then removeUpperCase(list);
 //the list is a->b->c->d->e->X
 void removeUpperCase(List l) {
-    if (l->head != NULL) {
-        Node curr = l->head;
-        Node prev = NULL;
-        // for one node case
-        if (l->head->next == NULL) {
-            if ((l->head->value >= 'A') && (l->head->value <= 'Z')) {
-                l->head = NULL;
-            }
+    Node curr = l->head;
+    Node prev = NULL;
+
+if (l->head != NULL) {
+    // one node case
+    if (l->head->next == NULL) {
+        if (l->head->value >= 'A' && l->head->value <= 'Z') {
+            l->head = NULL;
         } else {
-            // for first case
-            while ((curr->value >= 'A') && (curr->value <= 'Z')) {
-                curr = curr->next;
+            l->head->next = NULL;
+        }
+    // all other cases
+    } else {
+            while (prev == NULL) {
+                if (curr->value >= 'A' && curr->value <= 'Z') {
+                    curr = curr->next;
+                    l->head = curr;
+                    prev = curr;
+                } else {
+                    curr = curr->next;
+                }
             }
-            // reached lower case letter
-            l->head = curr;
-            prev = curr;
             curr = curr->next;
             while (curr != NULL) {
-                if ((curr->value >= 'A') && (curr->value <= 'Z')) {
-                    prev->next = curr->next;
+                if (curr->value >= 'A' && curr->value <= 'Z') {
                     curr = curr->next;
+                    prev->next = curr;
                 } else {
                     prev = curr;
                     curr = curr->next;
-                }
+                }          
             }
         }
     }
 }
- 
 
 
 //returns a new list of length 0

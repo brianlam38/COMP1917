@@ -21,8 +21,6 @@
 nodePtr frontToBack (nodePtr list) {
 
 
-
-
 }
 
 /* CHRIS SOLUTION

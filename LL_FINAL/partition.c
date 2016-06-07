@@ -32,59 +32,7 @@
 // the nodes that are greater than or equal should remain in their original relative order
      
 void partition (list sourceList) {
-	if (sourceList->head != NULL) {
-		link leftEnd = NULL;						// initiate LHS
-		link leftStart = NULL;
-		link curr = sourceList->head;				// curr @ NODE 1
-		link initialNode = sourceList->head;		// initialNode @ NODE 1
-		int initialVal = initialNode->value;
-
-		// ONE NODE CASE
-		if (sourceList->head->next == NULL) {
-			curr->next = NULL;
-		} else {
-			link prev = curr;						// prev @ NODE 1
-			curr = curr->next;						// curr @ NODE 2
-			// For first node connect
-			while (leftStart == NULL && curr != NULL) {
-				// Moving to LHS
-				if (curr->value < initialVal) {
-					leftStart = curr;
-					prev->next = curr->next;		// prev @ NODE 1
-					curr->next = initialNode;		// connects curr to initial node
-					curr = prev->next;				// bring curr @ NODE 2
-					sourceList->head = leftStart;
-				// Continue along list
-				} else {
-					prev = curr;
-					curr = curr->next;
-				}
-			}
-			// For all other connects until the end
-			leftEnd = leftStart;
-			while (curr != NULL) {
-				// Moving to LHS
-				if (curr->value < initialVal) {
-					prev->next = curr->next;
-					leftEnd->next = curr;
-					curr->next = initialNode;
-					//curr = prev->next;
-					curr = prev->next;
-					leftEnd = leftEnd->next;
-				// Continue along list
-				} else {
-					prev = curr;
-					curr = curr->next;
-				}
-			}			
-		}
-	}
-
-
 }
-
-
-
 
 
 

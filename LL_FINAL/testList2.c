@@ -9,7 +9,6 @@
 #include <assert.h>
 #include "List2.h"
 
-
  
 typedef struct _node {
     char value;

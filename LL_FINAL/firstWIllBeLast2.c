@@ -30,8 +30,10 @@ nodePtr frontToBack (nodePtr list) {
 	nodePtr first = list;	// initialises first @ NODE 1
 
 	if (list != NULL) {
+		// ONE NODE CASE
 		if (list->next == NULL) {
 			list->next = NULL;
+		// ALL OTHER CASES
 		} else {
 			while (curr->next != NULL) {
 				curr = curr->next;

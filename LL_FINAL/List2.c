@@ -65,6 +65,7 @@ if (l->head != NULL) {
         }
     // all other cases
     } else {
+            // initial case
             while (prev == NULL) {
                 if (curr->value >= 'A' && curr->value <= 'Z') {
                     curr = curr->next;
@@ -74,6 +75,7 @@ if (l->head != NULL) {
                     curr = curr->next;
                 }
             }
+            // the rest
             curr = curr->next;
             while (curr != NULL) {
                 if (curr->value >= 'A' && curr->value <= 'Z') {

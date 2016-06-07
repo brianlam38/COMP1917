@@ -18,37 +18,14 @@
 #include <assert.h>
 #include "firstWillBeLast.h"
 
+
+// given a list of nodes this function takes the node
+// from the front of the list and moves it to the end
+// of the list  by changing pointers, leaving the relative
+// order of the other nodes unchanged.
+// note: this function must not create new nodes 
+// or change the value field of existing nodes.
 nodePtr frontToBack (nodePtr list) {
 
 
 }
-
-/* CHRIS SOLUTION
-
-// we need to get the first node of the list and move it to the back
-// now... how do we do that
-// we are going to need a previous???
-// a current
-// store the address of the first node
-// store the address of the second node
-// connect the list to the second node
-// move first to the end
-// make it point to NULL
-
-    nodePtr current = list;
-    nodePtr first = list;
-    nodePtr ret = list;
-
-    if (list != NULL) { 
-        while (current->next != NULL) { // so here, we stop with current being the address of the last node in the list
-            ret = first->next;
-            current = current->next;
-        }
-        current->next = first;
-        first->next = NULL;
-    }
-    
-    return ret;
-}
-
-*/

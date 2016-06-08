@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "reverseList.h"
+#include "reverselist.h"
 
 #define FIRST   42
 #define SECOND  0

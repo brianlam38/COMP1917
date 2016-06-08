@@ -13,5 +13,18 @@
 #include <assert.h>
 #include "list-ppexam.h"
 
-list reverse (list inputList) {
+nodePtr reverse (nodePtr inputList) {
+	nodePtr curr = inputList;
+	nodePtr prev = NULL;
+
+	if (inputList != NULL) {
+		while (curr != NULL) {
+			nodePtr after = curr->next;
+			curr->next = prev;
+			prev = curr;
+			curr = after;
+		}
+		inputList = prev;		
+	}
+	return inputList;
 }

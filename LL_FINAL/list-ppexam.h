@@ -1,13 +1,12 @@
-/*
+
 typedef struct _node *nodePtr;
 
 typedef struct _node {
    int      value;
    nodePtr  next;
 } node;
-*/
 
-
+/*
 typedef struct _node *link;    // a link points to a node
  
 typedef struct _node {
@@ -20,15 +19,16 @@ typedef struct _node {
 typedef struct _list {
     link head;
 } *list; 
+*/
 
 //int numItems (list l); //implementation of this function is provided
 //void frontBackSplit (list sourceList, list frontList, list backList);
 
-void orderedDelete (list l);
+//void orderedDelete (list l);
 
 //nodePtr frontToBack (nodePtr list);
 
-//list reverse (list inputList);
+nodePtr reverse (nodePtr inputList);
 
 //int numItems (list l); //implementation of this function is provided
 //void pairwiseSwap (list l);

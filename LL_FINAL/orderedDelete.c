@@ -27,66 +27,19 @@
 //   1->4->6->6->10->X
 
 void orderedDelete (list l) {
-    link curr = l->head;
-    link prev = NULL;
-
     if (l->head != NULL) {
-        prev = curr;
-        curr = curr->next;
+        link curr = l->head->next;        // @ NODE 1
+        link prev = l->head;
+
         while (curr != NULL) {
-            if (prev->value <= curr->value) {
-                prev = curr;
+            if (prev->value > curr->value) {
                 curr = curr->next;
-            } else {
-                curr = curr->next;
+                // unlinking
                 prev->next = curr;
+            } else {
+                prev = prev->next;
+                curr = curr->next;
             }
         }
     }
 }
-
-
-/* CHRIS SOLUTION
-// A while loop with 7, 8, 21, X
-
-    if (l->head != NULL) { //A1
-        link current = l->head; //A1
-        int maxValue = current->value; // what A1's value is 7
-
-        link endOfNewList = current; // endOfNewList is pointing to A1
-//------------------------------------------
-        while (current->next != NULL) { // current->next is A
-            link after = current->next; // after is == A2
-            if (after->value >= maxValue) { // after->value is the value in A2 which is 8. This is greater than max value
-                maxValue = after->value; //maxValue gets changed to 8
-                endOfNewList->next = after;  //A1 is now pointing to A2
-                endOfNewList = after; // endOfNewList now points to A2
-            }
-            current = current->next; //current now == A2
-        }
-    endOfNewList->next = NULL; // A2 now points to NULL
-    }
-} 
-*/
-
-/*---------------------------------------------THE WRONG VERSION
-    if (l->head != NULL) { //A1
-        link current = l->head; //A1
-        int maxValue = current->value; // what A1's value is 7
-
-        link endOfNewList = current; // endOfNewList is pointing to A1
-        while (current->next != NULL) { // current->next is A
-            link after = current->next; // after is == A2
-            if (after->value >= maxValue) { // after->value is the value in A2 which is 8. This is greater than max value
-                maxValue = after->value; //maxValue gets changed to 8
-                endOfNewList->next = after;  //A1 is now pointing to A2
-                endOfNewList = after; // endOfNewList now points to A2
-                endOfNewList->next = NULL; // A2 now points to NULL                <=========================================
-            }
-            current = current->next; //current now == A2
-        }
-    }
-// Why is there an error????
-// The error is on the pointer line
-// Error caused starting on the line pointer at where I made A2 point to NULL. But then, after the if, I changed current to the address of A2. So When I do the while loop again, it wont go ahead because it points at NULL
-*/

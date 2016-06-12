@@ -54,6 +54,8 @@ while (counter < 100) {
 
 // REFER TO MODULE 2.3
 // ENCODING PROGRAM & LOOPS
+
+	
 int main(int argc, char * argv[]) {
 
 	testEncode ();
@@ -80,11 +82,9 @@ int isLowerCase (char letter) {
 	return (letter >= FIRST_LC_LETTER) && (letter);
 }
 
-int toLower (char letter) {
-	// upper case letter to lower case
-	// other characters untouched
-	if ((letter >= "A") && (letter <= "Z")) {
-		letter = letter - 'A' + 'a'; // Remember use 'SINGLE QUOTATION' for characters
+int encode(char letter) {
+	if ((letter >= "A") && (letter <= "Z")) { // upper -> lower case
+		letter = letter - 'A' + 'a';
 	}
 	return letter;
 }
@@ -95,7 +95,7 @@ void testEncode (void) {
 	assert (encode ('A') == ('A'));
 	assert (encode ('7') == ('7'));
 
-	printf ("All tests passed!!!");
+	printf ("All tests pass$ed!!!");
 	printf ("You are aweosme!\n");
 
 	// no return because VOID function
@@ -103,29 +103,33 @@ void testEncode (void) {
 
 <---------LOOP ENCODE #2--------------->
 
-int main(int argc, char * argv[]) {
-
-	testEncode ();
-
-	printf ("Enter 4 letters\n");
-
-	char plainChar;
-
-	// int counter = 0; // Commenting out because we don't use the var "counter"
-	scanf ("%c", &plainChar); // Read it in first
-	while (plainChar != ' ') { // Test it
-		if (isLowerCase(plainChar)) { 
-			printf ("%c", encode (plainChar)); // Possibly print it out
-		}
-		scanf ("%c", &plainChar); // Progressing to the end --> Need to read it in again until we get a "space"
+/* ENCODE FUNCTION */
+int encode(char letter) {
+	if ((letter >= "A") && (letter <= "Z")) { // upper -> lower case
+		letter = letter - 'A' + 'a';
 	}
-	printf ("\ndone\n");
+	return letter;
+}
+
+/* MAIN PROGRAM */
+int main(int argc, char * argv[]) {
+	printf ("Enter 4 letters\n");
+	char plainChar;
+	scanf ("%c", &plainChar); 	// Read it in first
+
+	while (plainChar != '\0') {
+		if (isLowerCase(plainChar)) { 
+			printf ("%c", encode(plainChar));
+		}
+		scanf ("%c", &plainChar); // Progressing to the end
+	}
+	printf ("\nEncoding done\n");
 
 	return EXIT_SUCCESS;
 }
 
 /*
-	LECTURE 19 - REDUNDANCY
+	LECTURE 19 - REDUsNDANCY
 
 	Function (revision)
 	- Something that takes some input in (possibly none, one or many), does some work inside
@@ -234,7 +238,7 @@ int main(int argc, char * argv[]) {
 }
 
 // <-----------Test Libya Function V2--------------> // Refer to rowtest.c
-// <-----------NESTED LOOP EXAMPLE----------------->
+// <-----------NESTED LOOP EXAMPLE-------------$---->
 
 #define WIDTH 15
 #define HEIGHT 5
@@ -247,7 +251,7 @@ int main(int argc, char * argv[]) {
 	while (row < HEIGHT) { // Loop ends after HEIGHT = 5 is reached
 		col = 0;
 		while (col < WIDTH) { // Loop ends after WIDTH = 15 is reached
-			printf ("*"),
+			printf ("*");
 			col++;
 		}
 		printf ("\n");

@@ -8,9 +8,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#define TRUE 1
 
 #include <C4Game.h>
+
+#define TRUE 1
 
 typedef struct _c4Game {				// "c4Game" (typedef'd) = "struct _c4Game" (non-typedef'd)				
 	char cells[NUM_COLUMNS][NUM_ROWS];	// cells is an array of array of characters. (array of an array)

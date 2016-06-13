@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+/*
 int turtle (int gamera, int achilles) {
 	//printf ("call (%d,%d)\n", gamera, achilles);
 	gamera = 2;
@@ -16,10 +16,11 @@ int turtle (int gamera, int achilles) {
 	printf ("%d", achilles);
     return (achilles+1);
 }
+*/
 
 int main (int argc, char *argv[]) {
 
-	/*
+	
 	// QUESTION 11
 	printf ("QUESTION 1 ANSWERS:\n");
     typedef unsigned char byte;
@@ -32,6 +33,7 @@ int main (int argc, char *argv[]) {
 	printf ("%d\n",ptr[2]);
     printf ("%d\n",ptr[3]);
 
+    /*
     // QUESTION 12
     int days = 100;
     days -= 365;

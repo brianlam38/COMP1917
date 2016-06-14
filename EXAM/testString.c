@@ -3,10 +3,10 @@
 
 int main(int argc, char *argv[]) {
 	char str1[] = "hello";
-	char str2[] = "hello";
+	char *stringPtr = str1;
 
-	printf ("%p\n", str1);
-	printf ("%p", str2);
+	printf ("%c\n", *stringPtr);
+	printf ("%p\n", &stringPtr);
 
 	/*
 	if (str1 == str2) {

@@ -1,49 +1,101 @@
+LEARN MORE:
+- Char, strings and arrays
+
 -- PART A --
 
 C0) E
 C1) B
 C2) C
 X3) it will print out: equal, because they have the same string values???
-4) The second block of code inserts the value of b into a,
+X4) The second block of code inserts the value of b into a,
 then c into b, then a (which carries the value of b after the first line) into c.
-5) C
-6) This code checks if the array contains numbers in descending order.
+X5) C
+X6) This code checks if the array contains numbers in descending order.
 If it does, then valid will remain TRUE. If it doesn't then valid will be FALSE.
-7) In decimal it is 9. (In hex it is 54? or 0x54?)
-8)
-9) 
+X7) Decimal = 36 / Hex = 0x73616f54
+X8) Toast! 
+9) //
 10) Array overflow, since there is no NULL terminator in both char arrays.
 11)
-- There is no reference to the pointer to integer p.
-- q int type can't be assigned pointer type.
+- It trys to asign a value to what p points to before p has been assigned an address to point to. p, uninitialised will likely point to some random address in memory, and changing the value at this address could caused undefined/strange behaviour in the program or other programs.
+- It will likely segfault since it will be accessing and assigning a value to memory which it probably isn't allowed to (likely in a separate segment which is marked as read only)
+
 12)
-- You are trying to allocate values in memory that is over the size of the array
-- Array is of size 6, but you are allocating in spaces 7 and 8.
-- Or either you can't allocate value "new line" to a char array.
+-  Since strlen() returns the length excluding the NULL character, len = 6. That means that str[6], which is where the current NULL character is, is changed to '\n', and then str[len + 1] which is out of the array, is set to 0. Accessing out of the bounds of an array is not allowed because other variables could be stored there, and this could be potentially a serious problem which will cause strange errors elsewhere.
+
+- It is possible that the program will segfault if the byte after the initial terminating character is in the wrong segment (marked readonly or something), but the program will likely continue without raising the error and print "a dog\n". However, the change to the value one after the end of the array, could cause problems elsewhere in the program as explained in the answer to the first part of Question 12
 
 -- PART B --
 
 13)
 
+	   // int sum = 0, store at 251
+10 0   //put 0 in R0
+12 251 //save R0 to add. 251
+
+// int current = 200 store at 252
+10 200 //put 200 in R0
+12 252 //save to add. 252
+
+// while (current != 251) {
+14 252 //swap current into R0
+12 252 //save it back to its address
+11 251 //put 251 into R1
+6      //R0 = R0 - R1, if 0 then equal
+9  36  //if equal, then break from loop
+5      // restore current in R0
+
+   // sum += value at current
+   12 23  //save current to instruction to put thing at address into R1
+   14 251 // swap sum into R0
+   15 0   //swap value at current into R1, 0 will be current by time executed
+   5      //add value at addr. curr. to sum
+   12 251 //save sum back to address
+
+   // current++;
+   14 252 //swap current into R0
+   1      //add 1 to current
+   12 252 //save current back to its address
+
+//}
+8 8 9 8 //jump back to start of loop
+
+//print sum
+14 251 //swap sum into R0
+7      //print R0
+
+0 //return 0
+
 14)
-- the calculation function "doCalculatio" is of type void, therefore it
-won't return anything. Because it doesn't return anything, the printf statement
-will only use the original values.
-- typedef struct _doCalculation {
-	double x;
-	int y;
-} doCalculation;
-- 
+ a. Do calculation takes in copies of x and y and changes the copies only, the originals which are printed remain unchanged
+
+ b. void doCalculation (double *x, int *y);
+
+ c. void doCalculation (double *x, int *y){
+    *x = *x/2;
+    *y = *y + 10;
+
+ d. doCalculation(&x, &y);
 
 15)
-void twosFunction(int n) {
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
+int main(int argc, char *argv[]) {
+	int n;
 	int count = 0;
+
+	scanf("%d", &n);
+	assert((n >= 1) && (n <= 1000000));
 
 	while ((n%2) != 1) {
 		n = n / 2;
 		count++;
 	}
 	printf("The number of times halved = %d", count);
+
+	return EXIT_SUCCESS;
 }
 
 16) ASSUMING THAT THIS IS NOT A TRICK QUESTION

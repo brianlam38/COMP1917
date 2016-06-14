@@ -1,0 +1,133 @@
+-- PART A --
+
+C0) E
+C1) B
+C2) C
+X3) it will print out: equal, because they have the same string values???
+4) The second block of code inserts the value of b into a,
+then c into b, then a (which carries the value of b after the first line) into c.
+5) C
+6) This code checks if the array contains numbers in descending order.
+If it does, then valid will remain TRUE. If it doesn't then valid will be FALSE.
+7) In decimal it is 9. (In hex it is 54? or 0x54?)
+8)
+9) 
+10) Array overflow, since there is no NULL terminator in both char arrays.
+11)
+- There is no reference to the pointer to integer p.
+- q int type can't be assigned pointer type.
+12)
+- You are trying to allocate values in memory that is over the size of the array
+- Array is of size 6, but you are allocating in spaces 7 and 8.
+- Or either you can't allocate value "new line" to a char array.
+
+-- PART B --
+
+13)
+
+14)
+- the calculation function "doCalculatio" is of type void, therefore it
+won't return anything. Because it doesn't return anything, the printf statement
+will only use the original values.
+- typedef struct _doCalculation {
+	double x;
+	int y;
+} doCalculation;
+- 
+
+15)
+void twosFunction(int n) {
+	int count = 0;
+
+	while ((n%2) != 1) {
+		n = n / 2;
+		count++;
+	}
+	printf("The number of times halved = %d", count);
+}
+
+16) ASSUMING THAT THIS IS NOT A TRICK QUESTION
+void threeBears (int a, int b, int c) {
+   int daddy, mummy, baby;
+   
+   if (b>a) {
+      if (a > c) {
+          daddy = b;
+          mummy = a;
+          baby = c;
+      } else if (c > b) {
+      	  daddy = c;
+      	  mummy = b;
+      	  baby = a;
+      } else if (b > c) {
+      	  daddy = b;
+      	  mummy = c;
+      	  baby = a;
+      }
+   } else {
+      // JULIAN TO DO
+   }   
+   printf ("The biggest is %d\n", daddy);
+   printf ("The middle is %d\n", mummy);
+   printf ("The smallest is %d\n", baby);  
+}
+
+-- PART C --
+17)
+void classify (int array[], int n) {
+	int count = 0;
+
+	while (count != n) {
+		if ()
+	}
+
+
+}
+
+a. array contains no zeros.
+
+b. array contains only one zero.
+
+c. the first two zeros in the array are separated by an even number of
+non-zeros.
+
+d. the first two zeros in the array are separated by an odd number of
+non-zeros.
+
+The function should either print "a", "b", "c", or "d".
+}
+
+
+18)
+// Complex.h
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct _complex * Complex;
+
+Complex multiply (Complex a, Complex b);
+Complex add (Complex a, Complex b);
+
+// Complex.c
+#include <stdio.h>
+#include <stdlib.h>
+#include "Complex.h"
+
+Complex multiply (Complex a, Complex b) {
+	
+}
+
+Complex add (Complex a, Complex b) {
+	
+}
+
+// ComplexUser.c
+
+19)
+
+
+
+
+
+
+

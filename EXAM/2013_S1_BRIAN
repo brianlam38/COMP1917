@@ -12,10 +12,11 @@ then c into b, then a (which carries the value of b after the first line) into c
 X5) C
 X6) This code checks if the array contains numbers in descending order.
 If it does, then valid will remain TRUE. If it doesn't then valid will be FALSE.
-X7) Decimal = 36 / Hex = 0x73616f54
+X7) Decimal = 84 / Hex = 0x73616f54
 X8) Toast! 
 9) //
-10) Array overflow, since there is no NULL terminator in both char arrays.
+10) Inside the stack, there luckily is a null terminator, allowing the "hello" string to print successfully.
+However, in the second string, there is no null terminator thus it is printing both world + hello afterwards.
 11)
 - It trys to asign a value to what p points to before p has been assigned an address to point to. p, uninitialised will likely point to some random address in memory, and changing the value at this address could caused undefined/strange behaviour in the program or other programs.
 - It will likely segfault since it will be accessing and assigning a value to memory which it probably isn't allowed to (likely in a separate segment which is marked as read only)
@@ -102,7 +103,7 @@ int main(int argc, char *argv[]) {
 void threeBears (int a, int b, int c) {
    int daddy, mummy, baby;
    
-   if (b>a) {
+   if (a<b) {
       if (a > c) {
           daddy = b;
           mummy = a;

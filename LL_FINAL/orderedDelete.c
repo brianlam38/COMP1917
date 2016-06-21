@@ -27,8 +27,9 @@
 //   1->4->6->6->10->X
 
 void orderedDelete (list l) {
+
     if (l->head != NULL) {
-        link curr = l->head->next;        // @ NODE 1
+        link curr = l->head->next;
         link prev = l->head;
 
         while (curr != NULL) {

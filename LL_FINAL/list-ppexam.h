@@ -23,11 +23,11 @@ typedef struct _list {
 //int numItems (list l); //implementation of this function is provided
 //void frontBackSplit (list sourceList, list frontList, list backList);
 
-//void orderedDelete (list l);
+void orderedDelete (list l);
 
 //nodePtr frontToBack (nodePtr list);
 
 //nodePtr reverse (nodePtr inputList);
 
-int numItems (list l); //implementation of this function is provided
-void pairwiseSwap (list l);
+//int numItems (list l); //implementation of this function is provided
+//void pairwiseSwap (list l);
